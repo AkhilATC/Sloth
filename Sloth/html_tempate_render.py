@@ -1,11 +1,9 @@
 def preload(fun_):
     def wrap_(*args):
-        outer = "<input id ='copy_btn' type='button' value='copy' onclick='BtnClick()'>"
-        print("----")
+        outer = "<p>ccd</p>"
         print(args)
         return fun_(outer)
     return wrap_
-
 
 @preload
 def template_preload(temp):
