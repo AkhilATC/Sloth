@@ -8,6 +8,9 @@ class SlothDataCouch:
 
     def return_shelf(self):
         return self.shelf_file
+
+    def is_fresh_user(self):
+        return False if self.shelf_file.get('basic_info') else True
     
     
 class SlothDataCouchRead(SlothDataCouch):
@@ -72,6 +75,18 @@ class SlothDataCouchWrite(SlothDataCouch):
             return True
         except Exception as e:
             return False
+
+    def remove_store(self, key="all"):
+        try:
+            if key == 'all':
+                self.shelf_file.pop('basic_info')
+                self.shelf_file.pop('tasks')
+            self.shelf_file.pop(key)
+            self.shelf_file.sync()
+            self.shelf_file.close()
+        except Exception as e:
+            print(e)
+
 
 
 if __name__ == '__main__':
