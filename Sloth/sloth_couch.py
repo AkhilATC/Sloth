@@ -6,7 +6,6 @@ class SlothDataCouch:
     def __init__(self, write_back=False):
         self.shelf_file = shelve.open("shelf_file", writeback=write_back)
 
-
     def return_shelf(self):
         return self.shelf_file
     
@@ -20,6 +19,13 @@ class SlothDataCouchRead(SlothDataCouch):
         try:
             basic = self.shelf_file['basic_info']
             return basic[key] if key else basic
+        except Exception as e:
+            print(e)
+
+    def read_task_info(self):
+        try:
+            tasks = self.shelf_file['tasks']
+            return tasks
         except Exception as e:
             print(e)
 
@@ -52,8 +58,20 @@ class SlothDataCouchWrite(SlothDataCouch):
                 self.shelf_file['basic_info']['log_out_time'] = log_out_time
             self.shelf_file.sync()
             self.shelf_file.close()
+            return True
         except Exception as e:
             print(e)
+            return False
+
+    def write_tasks(self, tasks=[]):
+        try:
+            if tasks:
+                self.shelf_file['tasks'] = tasks
+                self.shelf_file.sync()
+                self.shelf_file.close()
+            return True
+        except Exception as e:
+            return False
 
 
 if __name__ == '__main__':
@@ -61,12 +79,13 @@ if __name__ == '__main__':
     input_data = {
         "name": "akhil",
         "to": "Nirmal",
-        "content": "PFA",
+        "content": "PFA:kuku",
         "project": "RTB",
         "login_time": "9:30",
         "log_out_time": "6:00"
     }
 
-    SlothDataCouchWrite().write_info(input_data)
-    SlothDataCouchRead().read_basic_info()
+    SlothDataCouchWrite().write_tasks([{"name":"RTB DISCUSIION","status":"DONE"}])
+    a = SlothDataCouchRead()
+    print(a.read_task_info())
 

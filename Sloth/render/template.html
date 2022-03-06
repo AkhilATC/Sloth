@@ -1,0 +1,49 @@
+<p> Hi {{basic_info.to_name}}</p>
+<p> {{basic_info.content}} </p>
+<div dir="auto">
+<table cellspacing="0" cellpadding="0" dir="ltr" border="1" style="table-layout:fixed;font-size:10pt;font-family:'arial';width:0px;border-collapse:collapse;border:none"><colgroup><col width="100"><col width="100"><col width="100"><col width="100"><col width="100"></colgroup>
+
+<tbody>
+
+<!-- DATE HEAD -->
+<tr style="height:21px">
+<td style="border-bottom:1px solid #000000;padding:2px 3px 2px 3px;vertical-align:bottom;background-color:#d9d9d9;font-family:'roboto';font-weight:bold;color:#222222;text-align:center" rowspan="1" colspan="5">{{TIME_STAMP}}</td>
+</tr>
+<!-- LOGOUT TIME  -->
+<tr style="height:21px">
+<td style="border-right:1px solid #000000;border-bottom:1px solid #000000;border-left:1px solid #000000;padding:2px 3px 2px 3px;vertical-align:bottom;background-color:#d9d9d9;font-family:'roboto';font-weight:bold;color:#222222" rowspan="1" colspan="2">Logout Time:</td>
+<td style="border-right:1px solid #000000;border-bottom:1px solid #000000;padding:2px 3px 2px 3px;vertical-align:bottom;background-color:#d9d9d9;font-family:'roboto';font-weight:bold;color:#222222;text-align:center" rowspan="1" colspan="3">{{basic_info.log_out_time}}</td>
+</tr>
+<!-- PROJECT -->
+<tr style="height:21px">
+<td style="border-right:1px solid #000000;border-bottom:1px solid #000000;border-left:1px solid #000000;padding:2px 3px 2px 3px;vertical-align:bottom;background-color:#d9d9d9;font-family:'roboto';font-weight:bold;color:#222222">Project</td>
+<td style="border-right:1px solid rgb(0,0,0);border-bottom:1px solid rgb(0,0,0);padding:2px 3px;vertical-align:bottom;background-color:rgb(217,217,217);font-family:roboto;color:rgb(34,34,34)">{{basic_info.project}}</td>
+
+<td style="border-right:1px solid #000000;border-bottom:1px solid #000000;padding:2px 3px 2px 3px;vertical-align:bottom;background-color:#d9d9d9"></td><td style="border-right:1px solid #000000;border-bottom:1px solid #000000;padding:2px 3px 2px 3px;vertical-align:bottom;background-color:#d9d9d9"></td><td style="border-right:1px solid #000000;border-bottom:1px solid #000000;padding:2px 3px 2px 3px;vertical-align:bottom;background-color:#d9d9d9"></td></tr>
+
+<!-- ITREATOR HEAD -->
+<tr style="height:21px"><td style="border-right:1px solid #000000;border-bottom:1px solid #000000;border-left:1px solid #000000;padding:2px 3px 2px 3px;vertical-align:bottom;background-color:#d9d9d9;font-family:'roboto';font-weight:bold;color:#222222;text-align:center">Ticket No:</td><td style="border-right:1px solid #000000;border-bottom:1px solid #000000;padding:2px 3px 2px 3px;vertical-align:bottom;background-color:#d9d9d9;font-family:'roboto';font-weight:bold;color:#222222;text-align:center">Task/ Description</td><td style="border-right:1px solid #000000;border-bottom:1px solid #000000;padding:2px 3px 2px 3px;vertical-align:bottom;background-color:#d9d9d9;font-family:'roboto';font-weight:bold;color:#222222;text-align:center">Status</td><td style="border-right:1px solid #000000;border-bottom:1px solid #000000;padding:2px 3px 2px 3px;vertical-align:bottom;background-color:#d9d9d9;font-family:'roboto';font-weight:bold;color:#222222;text-align:center">ETA</td><td style="border-right:1px solid #000000;border-bottom:1px solid #000000;padding:2px 3px 2px 3px;vertical-align:bottom;background-color:#cccccc;font-family:'roboto';font-weight:bold;color:#222222">Original Estimate</td></tr>
+
+<!-- ITREATOR -->
+{% for task in tasks %}
+       <tr style="height:21px">
+
+		<!--1-->
+		<td style="border-right:1px solid rgb(0,0,0);border-bottom:1px solid rgb(0,0,0);border-left:1px solid rgb(0,0,0);padding:2px 3px;vertical-align:bottom;background-color:rgb(255,255,255);font-family:roboto;color:rgb(34,34,34);text-align:center">{{loop.index+1}}</td>
+
+		<td style="border-right:1px solid #000000;border-bottom:1px solid #000000;padding:2px 3px 2px 3px;vertical-align:bottom;background-color:#ffffff;color:#222222">{{ task.name }}</td>
+
+
+		<td style="border-right:1px solid rgb(0,0,0);border-bottom:1px solid rgb(0,0,0);padding:2px 3px;vertical-align:bottom;background-color:rgb(255,255,255);font-family:roboto;color:rgb(34,34,34);text-align:center">{{ task.status }}</td>
+
+
+		<td style="border-right:1px solid #000000;border-bottom:1px solid #000000;padding:2px 3px 2px 3px;vertical-align:bottom;background-color:#ffffff"></td>
+
+		<td style="border-right:1px solid #000000;border-bottom:1px solid #000000;padding:2px 3px 2px 3px;vertical-align:bottom;background-color:#ffffff"></td>
+		</tr>
+{% endfor %}
+
+<!-- END OF ITREATOR -->
+</tbody>
+</table>
+</div>

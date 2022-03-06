@@ -13,3 +13,12 @@ td, th {
 tr:nth-child(even) {
     background-color: #dddddd;
 }
+.sloth-span{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fira Code', monospace;
+    font-size: 16px;
+    padding: 20px;
+
+}
