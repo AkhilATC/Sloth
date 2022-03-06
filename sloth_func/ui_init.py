@@ -1,6 +1,10 @@
 import eel
 import argparse
-import html_tempate_render as htmlTR
+from sloth_func import html_tempate_render as htmlTR
+import os
+
+
+BASE_DIR = os.path.dirname(__file__)
 
 
 @eel.expose
@@ -8,7 +12,7 @@ def fetch_index():
     print(htmlTR.template_preload())
     return htmlTR.template_preload()
 
-eel.init("ui")
+eel.init(f"{BASE_DIR}/ui")
 # Start the index.html file
 
 if __name__ == '__main__':
@@ -18,4 +22,4 @@ if __name__ == '__main__':
     if args.render == 'admin':
         eel.start('admin.html', size=(600, 400))
     else:
-        eel.start('index.html', size=(600, 400))
+        eel.start(f'index.html', size=(600, 400))

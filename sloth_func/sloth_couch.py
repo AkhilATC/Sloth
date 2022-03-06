@@ -1,15 +1,19 @@
 import shelve
+import os
+BASE_DIR = os.path.dirname(__file__)
 
 
 class SlothDataCouch:
 
     def __init__(self, write_back=False):
-        self.shelf_file = shelve.open("shelf_file", writeback=write_back)
+        self.shelf_file = shelve.open(f"{BASE_DIR}/shelf_file", writeback=write_back)
+        # self.shelf_file['basic_info'] = {}
 
     def return_shelf(self):
         return self.shelf_file
 
     def is_fresh_user(self):
+        # print(self.shelf_file.get('basic_info') )
         return False if self.shelf_file.get('basic_info') else True
     
     
@@ -39,14 +43,14 @@ class SlothDataCouchWrite(SlothDataCouch):
 
     def write_info(self, data):
         try:
-            #print("----")
+            # print("----")
             name = data.get('name')  # sloth user
             to_name = data.get('to')  # salutation
             content = data.get('content')  # mail content
             project = data.get('project')  # project name
             login_time = data.get('login_time')  # login-time
             log_out_time = data.get('log_out_time')  # logout time
-            #print(self.shelf_file)
+            # print(self.shelf_file)
             if name:
                 self.shelf_file['basic_info']['name'] = name
             if to_name:
@@ -79,15 +83,12 @@ class SlothDataCouchWrite(SlothDataCouch):
     def remove_store(self, key="all"):
         try:
             if key == 'all':
-                self.shelf_file.pop('basic_info')
-                self.shelf_file.pop('tasks')
-            self.shelf_file.pop(key)
+                self.shelf_file["basic_info"] = {}
+                self.shelf_file['tasks'] = []
             self.shelf_file.sync()
             self.shelf_file.close()
         except Exception as e:
             print(e)
-
-
 
 if __name__ == '__main__':
 
