@@ -4,10 +4,13 @@ function onload(){
 }
 
 function call_back(pyOutput){
-    console.log("HERE IN CALL BACK")
-    console.log(pyOutput)
+    //console.log("HERE IN CALL BACK")
+    //console.log(pyOutput)
     document.getElementById('template').innerHTML = pyOutput
 
+}
+function saveForm(FormData){
+    console.log(FormData)
 }
 
     var copyBtn = document.querySelector('#copy_btn');

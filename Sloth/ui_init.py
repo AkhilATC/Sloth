@@ -1,4 +1,5 @@
 import eel
+import argparse
 import html_tempate_render as htmlTR
 
 
@@ -9,4 +10,12 @@ def fetch_index():
 
 eel.init("ui")
 # Start the index.html file
-eel.start('index.html', size=(600, 400))
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-owner", "--render", default="base")
+    args = parser.parse_args()
+    if args.render == 'admin':
+        eel.start('admin.html', size=(600, 400))
+    else:
+        eel.start('index.html', size=(600, 400))

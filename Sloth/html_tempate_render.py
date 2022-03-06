@@ -12,17 +12,15 @@ def preload(fun_):
 
 
 @preload
-def template_preload(b_info,t_info):
+def template_preload(b_info, t_info):
 
     with open('render/template.html') as file:
         template = Template(file.read())
     # Date: 03th March, 2022
     today = date.today()
     today = today.strftime("%dth. %B %Y")
-    print(today)
+
     TIME_STAMP = today
-    output = template.render(basic_info=b_info, tasks=t_info, TIME_STAMP=TIME_STAMP)
-    return output
-if __name__ == '__main__':
-   a = template_preload()
-   print(a)
+    # output = template.render(basic_info=b_info, tasks=t_info, TIME_STAMP=TIME_STAMP)
+    return template.render(basic_info=b_info, tasks=t_info, TIME_STAMP=TIME_STAMP)
+

@@ -39,14 +39,14 @@ class SlothDataCouchWrite(SlothDataCouch):
 
     def write_info(self, data):
         try:
-            print("----")
+            #print("----")
             name = data.get('name')  # sloth user
             to_name = data.get('to')  # salutation
             content = data.get('content')  # mail content
             project = data.get('project')  # project name
             login_time = data.get('login_time')  # login-time
             log_out_time = data.get('log_out_time')  # logout time
-            print(self.shelf_file)
+            #print(self.shelf_file)
             if name:
                 self.shelf_file['basic_info']['name'] = name
             if to_name:
@@ -61,10 +61,10 @@ class SlothDataCouchWrite(SlothDataCouch):
                 self.shelf_file['basic_info']['log_out_time'] = log_out_time
             self.shelf_file.sync()
             self.shelf_file.close()
-            return True
+            return 'Basic info successfully added !'
         except Exception as e:
             print(e)
-            return False
+            return 'Failed to upsert data'
 
     def write_tasks(self, tasks=[]):
         try:
