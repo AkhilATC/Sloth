@@ -12,6 +12,10 @@ class SlothDataCouch:
     def return_shelf(self):
         return self.shelf_file
 
+    def create_db_instance(self):
+        self.shelf_file['basic_info'] = {}
+        self.shelf_file['tasks'] = []
+        
     def is_fresh_user(self):
         # print(self.shelf_file.get('basic_info') )
         return False if self.shelf_file.get('basic_info') else True

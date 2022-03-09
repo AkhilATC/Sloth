@@ -1,0 +1,15 @@
+
+<div dir="ltr">{{ basic_info.to }}<div><br></div><div>{{basic_info.content}}</div><div><br></div><div><table cellspacing="0" cellpadding="0" dir="ltr" border="1" style="table-layout:fixed;font-size:10pt;font-family:Arial;width:0px;border-collapse:collapse;border:none"><colgroup><col width="100"><col width="100"><col width="184"><col width="100"></colgroup><tbody><tr style="height:21px"><td style="border-width:1px;border-style:solid;border-color:rgb(204,204,204) rgb(204,204,204) rgb(0,0,0);overflow:hidden;padding:2px 3px;vertical-align:bottom;background-color:rgb(153,153,153);font-family:Roboto" rowspan="1" colspan="2">Project: {{basic_info.project}}</td><td style="border-width:1px;border-style:solid;border-color:rgb(0,0,0) rgb(0,0,0) rgb(0,0,0) rgb(204,204,204);overflow:hidden;padding:2px 3px;vertical-align:bottom;background-color:rgb(153,153,153);font-family:Roboto">Date:{{ TIME_STAMP }}</td><td style="border-width:1px;border-style:solid;border-color:rgb(0,0,0) rgb(0,0,0) rgb(0,0,0) rgb(204,204,204);overflow:hidden;padding:2px 3px;vertical-align:bottom;background-color:rgb(153,153,153);font-family:Roboto">Login Time:9:30</td></tr>
+
+  <tr style="height:21px"><td style="border-width:1px;border-style:solid;border-color:rgb(204,204,204) rgb(0,0,0) rgb(0,0,0);overflow:hidden;padding:2px 3px;vertical-align:bottom;background-color:rgb(153,153,153);font-family:Roboto">Sl No</td><td style="border-width:1px;border-style:solid;border-color:rgb(204,204,204) rgb(0,0,0) rgb(0,0,0) rgb(204,204,204);overflow:hidden;padding:2px 3px;vertical-align:bottom;background-color:rgb(153,153,153);font-family:Roboto">Task</td><td style="border-width:1px;border-style:solid;border-color:rgb(204,204,204) rgb(0,0,0) rgb(0,0,0) rgb(204,204,204);overflow:hidden;padding:2px 3px;vertical-align:bottom;background-color:rgb(153,153,153)"></td><td style="border-width:1px;border-style:solid;border-color:rgb(204,204,204) rgb(0,0,0) rgb(0,0,0) rgb(204,204,204);overflow:hidden;padding:2px 3px;vertical-align:bottom;background-color:rgb(153,153,153)"></td></tr>
+
+  <!-- itreator -->
+{% for task in tasks %}
+  <tr style="height:21px">
+      <td style="border-width:1px;border-style:solid;border-color:rgb(204,204,204) rgb(0,0,0) rgb(0,0,0);overflow:hidden;padding:2px 3px;vertical-align:bottom;font-family:Roboto;text-align:center">{{loop.index+1}}</td>
+      <td style="border-width:1px;border-style:solid;border-color:rgb(204,204,204) rgb(0,0,0) rgb(0,0,0) rgb(204,204,204);overflow:hidden;padding:2px 3px;vertical-align:bottom" rowspan="1" colspan="3">{{task.name}}</td></tr>
+{% endfor %}
+</tbody>
+</table>
+
+</div></div>

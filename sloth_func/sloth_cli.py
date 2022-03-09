@@ -1,10 +1,11 @@
 import click
 from art import text2art
 import os
-print(os.getcwd())
 import subprocess
 from sloth_func import sloth_couch
+
 BASE_DIR = os.path.dirname(__file__)
+
 
 @click.command()
 def get_sloth():
@@ -17,8 +18,9 @@ def get_sloth():
         print("Select your actions from below. \n")
         click.echo(click.style("1. 🚀 Edit basic config", fg='red'))
         click.echo(click.style("2. 🚀 Generate log-out report", fg='red'))
-        click.echo(click.style("3. 🚀 Task manager", fg='red'))
-        click.echo(click.style("4. 🚀 Clear config", fg='red'))
+        click.echo(click.style("3. 🚀 Generate log-in report", fg='red'))
+        click.echo(click.style("4. 🚀 Task manager", fg='red'))
+        click.echo(click.style("5. 🚀 Clear config", fg='red'))
         prompt_msg = click.style("💬 : Choose your option", fg='blue')
         input_from = click.prompt(prompt_msg, type=int)
         if input_from == 1:
@@ -52,10 +54,10 @@ def get_sloth():
                 click.echo(click.style(f"💬 :{msg}:", fg='blue'))
 
         elif input_from == 2:
-            # print("-- Generate report--")
-            print(os.getcwd())
             subprocess.call(['python', f'{BASE_DIR}/ui_init.py'])
         elif input_from == 3:
+            subprocess.call(['python', f'{BASE_DIR}/ui_init.py', '-owner', "log_in"])
+        elif input_from == 4:
             tasks = sloth_couch.SlothDataCouchRead().read_task_info() or []
             click.echo(click.style("Press following key for action", fg='blue'))
             click.echo(click.style("(n) -> Add as new task:", fg='green'))
@@ -85,7 +87,7 @@ def get_sloth():
             msg = 'success' if msg else 'failed'
             click.echo(click.style(f"💬 : {msg}", fg='blue'))
 
-        elif input_from == 4:
+        elif input_from == 5:
             # print("Clear configs")
             sloth_couch.SlothDataCouchWrite().remove_store(key='all')
             click.echo(click.style("💬 : Data cleared successfully", fg='blue'))
@@ -117,8 +119,12 @@ def get_sloth():
                 basic_info["to"] = input_from
             if each == 'Content (mail)':
                 basic_info["content"] = input_from
-
+        sloth_couch.SlothDataCouch().create_db_instance()
         msg = sloth_couch.SlothDataCouchWrite().write_info(basic_info)
         click.echo(click.style(f"💬 :{msg}:", fg='blue'))
+
+    click.echo(click.style("💬 : Ok Good bye", fg='green'))
+
+
 if __name__ == '__main__':
-	get_sloth()
+    get_sloth()

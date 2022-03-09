@@ -5,6 +5,7 @@ setup(
     version='0.1.0',
     packages=find_packages(),
     include_package_data=True,
+    package_data = {'':["../sloth_func/ui/*","../sloth_func/render/*"]},
     install_requires=[
         'bottle',
         'MarkupSafe',
