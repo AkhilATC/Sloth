@@ -25,7 +25,7 @@ def get_sloth():
         input_from = click.prompt(prompt_msg, type=int)
         if input_from == 1:
             # print("--- Edit prompt ---")
-            # subprocess.call(['python', 'ui_init.py', '-owner', "admin"])
+            # subprocess.call(['python', 'ui_init.py', '-owner', "admin"], shell=True)
             basic_info = {}
             for each in ['Name', 'Project', 'Log-out time(pm)', 'Log-in time(am)', 'Reporting Manager',
                          'Content (mail)']:
@@ -54,9 +54,9 @@ def get_sloth():
                 click.echo(click.style(f"💬 :{msg}:", fg='blue'))
 
         elif input_from == 2:
-            subprocess.call(['python', f'{BASE_DIR}/ui_init.py'])
+            subprocess.call(['python', f'{BASE_DIR}/ui_init.py'], shell=True)
         elif input_from == 3:
-            subprocess.call(['python', f'{BASE_DIR}/ui_init.py', '-owner', "log_in"])
+            subprocess.call(['python', f'{BASE_DIR}/ui_init.py', '-owner', "log_in"], shell=True)
         elif input_from == 4:
             tasks = sloth_couch.SlothDataCouchRead().read_task_info() or []
             click.echo(click.style("Press following key for action", fg='blue'))
